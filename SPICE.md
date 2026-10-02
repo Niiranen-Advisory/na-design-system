@@ -8,7 +8,7 @@ N/A is what you write when a question does not apply. The slash is the load-bear
 
 ## Rules
 
-1. **One piece per view.** A window, a cut, a glyph header or a stamp. Not two. A page that uses three is decorated, not authored.
+1. **One piece per view.** A window, a cut or a glyph header. Not two. A page that uses three is decorated, not authored.
 2. **Flat.** No shadows, no gradients as tone, no glow, no blur. The hatch is a line pattern with hard stops and is allowed because it is flat. Corners stay at 4px or under.
 3. **One accent.** The accent appears once per piece: the primary button, the slash, the highlighted cell.
 4. **Never behind body text.** Glyphs and hatch sit behind a heading or beside the content, not under paragraphs.
@@ -25,7 +25,7 @@ N/A is what you write when a question does not apply. The slash is the load-bear
 | Crop | `crop.svg` | Deck cover, identity plate, 404 | Anything small: it needs room to bleed |
 | Hatch | `.na-hatch` (CSS), `hatch-band.svg` | Strips, chart series, the offset behind a window | Tone or depth. It is a fill, not a shadow substitute for every box |
 | Glyph | `.na-glyph` (CSS) | A quiet mark behind one section header | Carrying meaning, or repeated down a page |
-| Examples | `receipt`, `coverage`, `checkbox`, `sheet`, `stamp`, `hatch-chart` (SVG) | Showing a specific idea as a picture: footnote chains, overlap, "not applicable" | Filler. Each one should illustrate its section |
+| Examples | `receipt`, `coverage`, `checkbox`, `sheet`, `hatch-chart` (SVG) | Showing a specific idea as a picture: footnote chains, overlap, "not applicable" | Filler. Each one should illustrate its section |
 
 ## Brands
 

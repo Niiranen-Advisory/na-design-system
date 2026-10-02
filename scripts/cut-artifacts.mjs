@@ -59,7 +59,6 @@ const CONTENT = {
       ['5', 'Trial', 'N/A', 'N/A', 'N/A'],
     ],
   },
-  stamp: { top: 'NOT APPLICABLE', main: 'N/A' },
   chart: { keys: ['hatch', 'solid ink', 'accent'], groups: ['Q1', 'Q2', 'Q3', 'Q4'] },
 };
 
@@ -76,7 +75,6 @@ const PALETTES = {
 };
 
 const MONO = 'SFMono-Regular,Consolas,"Liberation Mono",Menlo,monospace';
-const MONOQ = "SFMono-Regular,Consolas,'Liberation Mono',Menlo,monospace"; // for style="" attributes
 const v = (name, fb) => `var(--na-color-${name},${fb})`;
 const f = (n) => +n.toFixed(1);
 const esc = (s) => String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
@@ -211,18 +209,6 @@ ${c.options.map((o, i) => opt(xs[i], o, i === c.checked)).join('')}
     return svg(W, H, b, 'Spreadsheet fragment where several cells read N/A and are filled in the accent colour');
   };
 
-  // STAMP: flat, no distress
-  const stamp = () => {
-    const W = 680, H = 440, c = CONTENT.stamp;
-    return svg(W, H, `<rect class="bg" width="${W}" height="${H}"/>
-<g transform="rotate(-${SLASH} ${W / 2} ${H / 2})">
-<rect class="la" x="150" y="130" width="380" height="180" stroke-width="10"/>
-<rect class="la" x="168" y="148" width="344" height="144" stroke-width="3"/>
-<text class="acc" x="${W / 2}" y="270" text-anchor="middle" style="font:700 84px ${MONOQ}">${esc(c.main)}</text>
-<text class="acc" x="${W / 2}" y="186" text-anchor="middle" style="font:700 15px ${MONOQ};letter-spacing:.25em">${esc(c.top)}</text></g>`,
-      `Rubber-stamp style ${c.main} mark tilted upward`);
-  };
-
   // HATCH CHART: series by fill type, not by hue
   const hatchChart = () => {
     const W = 680, H = 440, base = 360, x0 = 80, c = CONTENT.chart;
@@ -243,7 +229,7 @@ ${c.options.map((o, i) => opt(xs[i], o, i === c.checked)).join('')}
     return svg(W, H, b, 'Bar chart with three series distinguished by hatch, solid ink and accent fill; illustrative values');
   };
 
-  return { cut, crop, 'hatch-band': hatchBand, receipt, coverage, checkbox, sheet, stamp, 'hatch-chart': hatchChart };
+  return { cut, crop, 'hatch-band': hatchBand, receipt, coverage, checkbox, sheet, 'hatch-chart': hatchChart };
 }
 
 let n = 0;

@@ -25,9 +25,10 @@ Open `examples/spice.html` to see every piece and switch brand.
 | `palettes/` | Perspectives and Licensing Guide brands |
 | `spice.css` | Window, cut, hatch, glyph |
 | `SPICE.md` | The rules for using them |
-| `assets/brand/` | Monogram, wordmark and favicon SVGs |
-| `assets/artifacts/` | Generated SVGs: cut, crop, hatch band, receipt, coverage, checkbox, sheet, stamp, hatch chart. Each in light and `-dark` |
+| `assets/brand/` | Monogram (light, reversed, dark, and the square plate), wordmark and favicon. See its README |
+| `assets/artifacts/` | Generated SVGs: cut, crop, hatch band, receipt, coverage, checkbox, sheet, hatch chart. Each in light and `-dark` |
 | `scripts/cut-artifacts.mjs` | Regenerates `assets/artifacts/`. No dependencies |
+| `scripts/cut-brand.mjs` | Derives the dark monogram and plate icon from the master |
 | `examples/spice.html` | Demo page |
 
 ## Regenerate artifacts
