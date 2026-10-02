@@ -1,0 +1,90 @@
+/*
+  N/A Design — palette override: The Licensing Guide (licensing.guide)
+  https://github.com/Niiranen-Advisory/na-design-system
+
+  Load AFTER tokens.css. Overrides only colour / font-stack values on the
+  shared semantic slots; structure (space scale, type-scale mechanics, the
+  4px radius ceiling, border-not-shadow policy, the four font roles) is
+  inherited unchanged.
+
+  The Licensing Guide is the design system's DARK brand. The live site is
+  already full dark mode (white UPPERCASE DM Serif Display headings over a
+  darker body, full-bleed dramatic imagery — burning licensing paperwork
+  on the homepage). It is where the "dark side" satire lives: Power
+  Platform people are afraid of licensing questions, so the brand leans
+  into being the thing they fear. This palette carries that instead of
+  inverting it to a light page.
+
+  Not a `prefers-color-scheme` toggle and not a slop dark mode — flat
+  near-black, one warm accent, no glow, no gradient, no accent box-shadow
+  (those remain DESIGN.md hard blocks on any surface). See DESIGN.md ->
+  "The Licensing Guide (dark brand)" and examples/licensing-guide.md.
+
+  GROUND (round 10, 2026-09-08, after /impeccable critique): the slate
+  #212A37 from rounds 8–9 was the "comfortable corporate dark" reflex — a
+  blue-grey mid-tone, not the stark counterpart the white brand deserves.
+  Corrected to a near-black that carries the brand's OWN warm hue: a very
+  dark oxblood (#181110). Mirrors the default brand's discipline (stark
+  #fff, structure from ink + hard borders) on the dark side. Body ink is a
+  warm off-white; headings are pure #fff for a two-tier hierarchy, the way
+  the live site separates its white headings from its body text.
+
+  ACCENT: WARM RUST #e07a4f — a lightened oxblood. Family tie to the
+  default brand, and contrast against the near-black ground is comfortable
+  (~5.9:1). A cool Microsoft-doc blue survives only as
+  --na-color-ms-reference. OPEN: rust vs. no chromatic accent at all.
+*/
+
+:root {
+  /* ---- Reading surface — near-black, carrying the brand's warm hue ---- */
+  --na-color-bg: #181110;
+  --na-color-bg-raised: #241a17;
+  --na-color-ink: #efe9e6;
+  --na-color-ink-muted: #a89f9a;
+  --na-color-border: #3a2c27;
+  --na-color-border-strong: #efe9e6;
+  /* Two-tier hierarchy: pure-white headings against the off-white body. */
+  --na-color-heading: #ffffff;
+
+  /* ---- Accent — warm rust, one accent, ~5.9:1 on the near-black ---- */
+  --na-color-accent: #e07a4f;
+  --na-color-accent-ink: #1a1206;
+
+  /* Tints mix toward the near-black ground. Raised enough to read as a
+     distinct surface, not a barely-there rectangle. */
+  --na-color-callout-bg: color-mix(in srgb, var(--na-color-accent) 15%, var(--na-color-bg));
+  --na-color-warning-bg: color-mix(in srgb, var(--na-color-accent) 26%, var(--na-color-bg));
+  --na-color-warning-border: var(--na-color-accent);
+
+  --na-color-danger: #ff6b61;
+  --na-color-danger-ink: #1a0605;
+
+  /* The accent is light enough to carry near-black text — mark is an
+     accent block with dark ink. */
+  --na-color-mark: var(--na-color-accent);
+  --na-color-mark-ink: #1a1206;
+
+  /* ---- The plate — pure-black identity band, one step darker than the
+     near-black page: masthead, the social/OG image frame. Matches the live
+     logo lockup and default OG image. Still flat. ---- */
+  --na-color-plate-bg: #000000;
+  --na-color-plate-ink: #ffffff;
+  --na-color-plate-ink-muted: #9b968d;
+  --na-color-plate-border: #262320;
+  --na-color-plate-accent: #e07a4f;
+
+  /* ---- Spice kit (spice.css): on this ground the hatch recedes toward the
+     page colour so the accent button on top stays the loudest thing. ---- */
+  --na-hatch-color: color-mix(in srgb, var(--na-color-accent) 38%, var(--na-color-bg));
+
+  /* ---- Microsoft-reference blue — SEMANTIC ONLY, lightened for the dark
+     ground. A link or marker that points specifically at a Microsoft
+     product or Learn page, nowhere else. ---- */
+  --na-color-ms-reference: #4aa3ff;
+
+  /* ---- Fonts — identical to the base (this site is where they came
+     from); restated so a future base font change does not silently move
+     this brand without a decision. ---- */
+  --na-font-display: "DM Serif Display", Georgia, serif;
+  --na-font-text: "IBM Plex Serif", Georgia, "Iowan Old Style", "Palatino Linotype", serif;
+}

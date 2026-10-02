@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 680 440" role="img" aria-label="Form question with N/A ticked"><style>
+.bg{fill:var(--na-color-bg,#181110)}.rz{fill:var(--na-color-bg-raised,#241a17)}.ink{fill:var(--na-color-ink,#efe9e6)}
+.mut{fill:var(--na-color-ink-muted,#a89f9a)}.acc{fill:var(--na-color-accent,#e07a4f)}.bd{fill:var(--na-color-border,#3a2c27)}
+.pbg{fill:var(--na-color-plate-bg,#000000)}.pbd{fill:var(--na-color-plate-border,#262320)}.pac{fill:var(--na-color-plate-accent,#e07a4f)}
+.ln{stroke:var(--na-color-ink,#efe9e6);fill:none}.lm{stroke:var(--na-color-ink-muted,#a89f9a);fill:none}
+.la{stroke:var(--na-color-accent,#e07a4f);fill:none}.lb{stroke:var(--na-color-border,#3a2c27);fill:none}
+.t{font:500 15px SFMono-Regular,Consolas,"Liberation Mono",Menlo,monospace}.ts{font:500 12px SFMono-Regular,Consolas,"Liberation Mono",Menlo,monospace}.tl{font:500 20px SFMono-Regular,Consolas,"Liberation Mono",Menlo,monospace}
+</style><defs>
+<pattern id="na-hatch-accent" width="9" height="9" patternUnits="userSpaceOnUse" patternTransform="rotate(20)"><rect width="2.6" height="9" fill="var(--na-color-accent,#e07a4f)"/></pattern>
+<pattern id="na-hatch-ink" width="9" height="9" patternUnits="userSpaceOnUse" patternTransform="rotate(20)"><rect width="2.6" height="9" fill="var(--na-color-ink,#efe9e6)"/></pattern>
+</defs><rect class="bg" width="680" height="440"/>
+<rect class="ln" x="20" y="20" width="640" height="400" stroke-width="2"/>
+<text class="ts mut" x="48" y="62">COMPLIANCE FORM · SECTION 4</text>
+<line class="ln" x1="40" x2="640" y1="80" y2="80" stroke-width="2.5"/>
+<text class="t ink" x="48" y="134">4.2  Does this licence cover your</text><text class="t ink" x="48" y="158">scenario?</text>
+<rect class="ln" x="48" y="226" width="34" height="34" stroke-width="2.5"/>
+
+<text class="tl ink" x="94" y="251">Yes</text><rect class="ln" x="188" y="226" width="34" height="34" stroke-width="2.5"/>
+
+<text class="tl ink" x="234" y="251">No</text><rect class="ln" x="318" y="226" width="34" height="34" stroke-width="2.5"/>
+<rect class="acc" x="318" y="226" width="34" height="34"/><polyline points="326,243 333,251 345,235" fill="none" stroke="var(--na-color-bg,#181110)" stroke-width="4" stroke-linecap="square"/>
+<text class="tl acc" x="364" y="251">N/A</text>
+<line class="lb" x1="40" x2="640" y1="330" y2="330" stroke-width="1.5"/>
+<text class="ts mut" x="48" y="370">Signed: ____________________   Date: __________</text></svg>

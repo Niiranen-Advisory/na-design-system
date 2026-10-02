@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630" role="img" aria-label="Split field: what the page says versus what the invoice says"><style>
+.bg{fill:var(--na-color-bg,#ffffff)}.rz{fill:var(--na-color-bg-raised,#eeeeeb)}.ink{fill:var(--na-color-ink,#1a1a18)}
+.mut{fill:var(--na-color-ink-muted,#55534d)}.acc{fill:var(--na-color-accent,#7a2e1c)}.bd{fill:var(--na-color-border,#cfccc3)}
+.pbg{fill:var(--na-color-plate-bg,#0b0b0b)}.pbd{fill:var(--na-color-plate-border,#2c2a27)}.pac{fill:var(--na-color-plate-accent,#d06a4e)}
+.ln{stroke:var(--na-color-ink,#1a1a18);fill:none}.lm{stroke:var(--na-color-ink-muted,#55534d);fill:none}
+.la{stroke:var(--na-color-accent,#7a2e1c);fill:none}.lb{stroke:var(--na-color-border,#cfccc3);fill:none}
+.t{font:500 15px SFMono-Regular,Consolas,"Liberation Mono",Menlo,monospace}.ts{font:500 12px SFMono-Regular,Consolas,"Liberation Mono",Menlo,monospace}.tl{font:500 20px SFMono-Regular,Consolas,"Liberation Mono",Menlo,monospace}
+</style><defs>
+<pattern id="na-hatch-accent" width="9" height="9" patternUnits="userSpaceOnUse" patternTransform="rotate(20)"><rect width="2.6" height="9" fill="var(--na-color-accent,#7a2e1c)"/></pattern>
+<pattern id="na-hatch-ink" width="9" height="9" patternUnits="userSpaceOnUse" patternTransform="rotate(20)"><rect width="2.6" height="9" fill="var(--na-color-ink,#1a1a18)"/></pattern>
+</defs><rect class="bg" width="1200" height="630"/>
+<polygon class="pbg" points="0,0 814.7,0 585.3,630 0,630"/>
+<rect class="pac" x="686" y="-60" width="28" height="750" transform="rotate(20 700 315)"/>
+<text class="t" x="48" y="582" style="fill:#fff">what the page says</text>
+<text class="t ink" x="1152" y="582" text-anchor="end">what the invoice says</text></svg>

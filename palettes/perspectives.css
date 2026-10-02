@@ -1,0 +1,51 @@
+/*
+  N/A Design — palette override: Perspectives on Power Platform newsletter
+  https://github.com/Niiranen-Advisory/na-design-system
+
+  Load AFTER tokens.css. Overrides only the color/font-stack values, on
+  the same semantic slot names — structure (space, type scale, radius
+  ceiling, border/shadow policy) is inherited unchanged from tokens.css.
+
+  Values carried over from the newsletter site's own token set
+  (helloperspectives/src/styles.css) — this file is now the source of
+  truth going forward; port changes back there, not the other way round.
+
+  Known flagged item (not a hard-block yet, tracked for a future pass):
+  --na-font-display below is Space Grotesk, which DESIGN.md names as a
+  default-AI-SaaS font tell. Grandfathered here because it's the
+  established, shipped newsletter brand, not a fresh default choice —
+  but it's the one thing in this file that should get a deliberate
+  replacement before it's held up as "the" N/A Design example of a
+  distinct brand voice.
+*/
+
+:root {
+  --na-color-bg: oklch(1 0 0);           /* white paper, same as base */
+  --na-color-bg-raised: oklch(0.97 0.005 285);
+  --na-color-ink: oklch(0.36 0.11 340);  /* #731263 plum */
+  --na-color-ink-muted: oklch(0.5 0.06 340);
+  --na-color-border: oklch(0.91 0.005 285); /* #E5E7EB soft rule */
+  --na-color-border-strong: oklch(0.36 0.11 340);
+
+  --na-color-accent: oklch(0.65 0.24 322);        /* #C14FE5 magenta */
+  --na-color-accent-ink: oklch(0.9 0.06 305);     /* #DFCBFA lilac */
+
+  --na-color-callout-bg: oklch(0.9 0.06 305);     /* lilac tint */
+  --na-color-warning-bg: color-mix(in oklch, var(--na-color-accent) 14%, white);
+  --na-color-warning-border: var(--na-color-accent);
+
+  --na-color-danger: oklch(0.55 0.22 27);
+  --na-color-danger-ink: oklch(1 0 0);
+
+  /* The emphasis mark fills with the accent by default (tokens.css); the
+     magenta accent is too light to reverse text out of at phrase size, so
+     Perspectives marks with the plum ink instead. Same device, brand block. */
+  --na-color-mark: var(--na-color-ink);
+  --na-color-mark-ink: oklch(1 0 0);
+
+  /* Flagged — see file header. */
+  --na-font-display: "Space Grotesk", ui-sans-serif, system-ui, sans-serif;
+  --na-font-text: "Raleway", ui-sans-serif, system-ui, sans-serif;
+  --na-font-ui: "Raleway", ui-sans-serif, system-ui, sans-serif;
+  --na-font-mono: "JetBrains Mono", ui-monospace, monospace;
+}

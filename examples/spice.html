@@ -1,0 +1,116 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Spice kit examples</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=IBM+Plex+Serif:ital,wght@0,400;0,600;1,400&display=swap">
+<link rel="stylesheet" href="../tokens.css">
+<link rel="stylesheet" id="brand" href="">
+<link rel="stylesheet" href="../spice.css">
+<style>
+  body { margin: 0; background: var(--na-color-bg); color: var(--na-color-ink); font: 400 var(--na-text-base)/var(--na-line-height-text) var(--na-font-text); }
+  main { max-width: 64rem; margin: 0 auto; padding: var(--na-space-md) var(--na-space-sm) var(--na-space-xl); }
+  h1, h2 { font-family: var(--na-font-display); font-weight: 400; color: var(--na-color-heading); line-height: 1.1; }
+  h1 { font-size: var(--na-text-2xl); margin: var(--na-space-lg) 0 var(--na-space-xs); }
+  h2 { font-size: var(--na-text-xl); margin: var(--na-space-xl) 0 var(--na-space-xs); }
+  p { max-width: 42rem; }
+  .top { display: flex; justify-content: space-between; align-items: center; gap: 1rem; flex-wrap: wrap; font: 400 var(--na-text-sm) var(--na-font-ui); }
+  .top img { height: 1.6rem; width: auto; }
+  .top select { font: inherit; padding: 0.3rem 0.5rem; border: 2px solid var(--na-color-ink); background: var(--na-color-bg); color: var(--na-color-ink); border-radius: 0; }
+  .wins { display: grid; grid-template-columns: repeat(auto-fit, minmax(17rem, 1fr)); gap: calc(var(--na-hatch-offset) * 2 + 1rem); padding-right: var(--na-hatch-offset); padding-bottom: var(--na-hatch-offset); align-items: start; }
+  .band { border-block: 2px solid var(--na-color-ink); padding: var(--na-space-lg) var(--na-space-md); margin-top: var(--na-space-sm); }
+  .band h3 { font: 400 var(--na-text-xl)/1.1 var(--na-font-display); margin: 0 0 var(--na-space-2xs); color: var(--na-color-heading); max-width: 34rem; }
+  .band p { margin: 0; color: var(--na-color-ink-muted); }
+  .strip { height: 3.2rem; border: 2px solid var(--na-color-ink); }
+  .key { display: flex; gap: 1.5rem; flex-wrap: wrap; font: 500 var(--na-text-sm) var(--na-font-mono); margin-top: var(--na-space-xs); }
+  .key i { margin-right: 0.35em; }
+  .art { display: grid; grid-template-columns: repeat(auto-fit, minmax(18rem, 1fr)); gap: var(--na-space-md); margin-top: var(--na-space-sm); }
+  .art figure { margin: 0; }
+  .art img { display: block; width: 100%; height: auto; border: 1px solid var(--na-color-border); }
+  .art figcaption { font: 400 var(--na-text-sm)/1.4 var(--na-font-ui); color: var(--na-color-ink-muted); margin-top: 0.4rem; }
+</style>
+</head>
+<body>
+<main>
+  <div class="top">
+    <img id="mark" src="../assets/brand/na-wordmark.svg" alt="Niiranen/Advisory">
+    <label>Brand
+      <select id="pick">
+        <option value="">Niiranen Advisory</option>
+        <option value="../palettes/perspectives.css">Perspectives</option>
+        <option value="../palettes/licensing-guide.css">Licensing Guide</option>
+      </select>
+    </label>
+  </div>
+
+  <h1>The spice kit</h1>
+  <p>A few pieces of N/A identity that drop into any page. They read the brand tokens, so switching the brand above recolors all of them.</p>
+
+  <h2>Window</h2>
+  <p>A frame with a hatched offset. The three below are the same component with different text. Use one per view.</p>
+  <div class="wins">
+    <div class="na-window">
+      <div class="na-window__bar"><p class="na-window__title">dataverse / capacity</p></div>
+      <div class="na-window__body"><p class="na-window__message">This licence includes 0 MB of Dataverse capacity. See footnote 4, which refers to footnote 7.</p></div>
+      <div class="na-window__foot"><a class="na-window__button" href="#">Dismiss</a><a class="na-window__button na-window__button--primary" href="#">Open footnote 7</a></div>
+    </div>
+    <div class="na-window na-window--flip">
+      <div class="na-window__bar"><p class="na-window__title">licensing.guide</p><div class="na-window__controls" aria-hidden="true"><span>&ndash;</span><span>&times;</span></div></div>
+      <div class="na-window__body"><p class="na-window__quote">Capacity is metered in three places. The portal shows you none of them.</p></div>
+      <div class="na-window__foot"><a class="na-window__button na-window__button--primary" href="#">Read the analysis</a></div>
+    </div>
+    <div class="na-window">
+      <div class="na-window__bar"><p class="na-window__title">trial / dataverse</p></div>
+      <div class="na-window__body"><p class="na-window__figure">0 MB<small>included</small></p><p>of Dataverse capacity on the trial. Check what the footnotes say.</p></div>
+      <div class="na-window__foot"><a class="na-window__button na-window__button--primary" href="#">Open licensing.guide</a></div>
+    </div>
+  </div>
+
+  <h2>Cut</h2>
+  <p>A field split on the slash. A masthead, a section divider, a cover.</p>
+  <div class="na-cut"><span>what the page says</span><span>what the invoice says</span></div>
+
+  <h2>Glyph</h2>
+  <p>A quiet mark behind a header. Decorative only. The starter set is provisional: &sect;, &empty; and &ne; drawn on the slash, and a question mark.</p>
+  <div class="na-glyph na-glyph--null band"><h3>Included, with conditions</h3><p>The glyph sits behind the heading at watermark strength and never touches the reading.</p></div>
+  <div class="na-glyph na-glyph--neq na-glyph--accent band"><h3>Vendor claim &ne; what you can buy</h3><p>The accent tint is for one header, not every section.</p></div>
+  <div class="na-glyph band" data-glyph="&sect;"><h3>Section 4.2</h3><p>Typeset glyphs come from the display face.</p></div>
+
+  <h2>Hatch</h2>
+  <p>A fill, for strips and for chart series that should differ by fill type instead of by another hue.</p>
+  <div class="na-hatch strip" role="img" aria-label="Hatched strip"></div>
+  <div class="key">
+    <span><i class="na-hatch-key na-hatch"></i> hatch</span>
+    <span><i class="na-hatch-key" style="background:var(--na-color-ink)"></i> solid ink</span>
+    <span><i class="na-hatch-key" style="background:var(--na-color-accent)"></i> accent</span>
+  </div>
+
+  <h2>Artifacts</h2>
+  <p>Generated SVGs from <code>assets/artifacts/</code>. Used as images they show the default or dark fallback colors; inlined, they follow the brand tokens.</p>
+  <div class="art" id="art">
+    <figure><img data-art="cut" src="../assets/artifacts/cut.svg" alt="Split field: what the page says versus what the invoice says"><figcaption>cut</figcaption></figure>
+    <figure><img data-art="crop" src="../assets/artifacts/crop.svg" alt="Oversized N/A monogram cropped by the frame"><figcaption>crop</figcaption></figure>
+    <figure><img data-art="receipt" src="../assets/artifacts/receipt.svg" alt="Document excerpt where one footnote refers to another"><figcaption>receipt</figcaption></figure>
+    <figure><img data-art="coverage" src="../assets/artifacts/coverage.svg" alt="Three overlapping licence boundaries with a scenario outside all of them"><figcaption>coverage</figcaption></figure>
+    <figure><img data-art="checkbox" src="../assets/artifacts/checkbox.svg" alt="Form question with N/A ticked"><figcaption>checkbox</figcaption></figure>
+    <figure><img data-art="sheet" src="../assets/artifacts/sheet.svg" alt="Spreadsheet fragment with several N/A cells"><figcaption>sheet</figcaption></figure>
+    <figure><img data-art="stamp" src="../assets/artifacts/stamp.svg" alt="Rubber-stamp style N/A mark"><figcaption>stamp</figcaption></figure>
+    <figure><img data-art="hatch-chart" src="../assets/artifacts/hatch-chart.svg" alt="Bar chart with hatch, solid and accent series"><figcaption>hatch chart</figcaption></figure>
+  </div>
+</main>
+<script>
+  const link = document.getElementById('brand'), pick = document.getElementById('pick');
+  function apply() {
+    link.href = pick.value || '';
+    const dark = pick.value.includes('licensing-guide');
+    document.getElementById('mark').src = '../assets/brand/' + (dark ? 'na-wordmark-reversed.svg' : 'na-wordmark.svg');
+    document.querySelectorAll('[data-art]').forEach(i => { i.src = '../assets/artifacts/' + i.dataset.art + (dark ? '-dark' : '') + '.svg'; });
+  }
+  pick.addEventListener('change', apply);
+  const q = new URLSearchParams(location.search).get('brand');
+  if (q) { for (const o of pick.options) if (o.value.includes(q)) pick.value = o.value; }
+  apply();
+</script>
+</body>
+</html>
