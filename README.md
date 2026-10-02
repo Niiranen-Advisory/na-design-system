@@ -45,4 +45,4 @@ Early. The tokens, palettes and brand marks are carried over unchanged from the 
 
 ## License
 
-Not yet decided. Until a license is added, all rights are reserved.
+[CC BY-NC-ND 4.0](LICENSE). Free to read, learn from, take inspiration from, and share unmodified with credit for noncommercial purposes. Not free to take and run with as your own design system. The brand marks in `assets/brand/` are not licensed at all. See [NOTICE.md](NOTICE.md).
