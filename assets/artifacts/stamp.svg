@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 680 440" role="img" aria-label="Ink stamp reading NOT APPLICABLE, set at the slash angle"><style>
+.bg{fill:var(--na-color-bg,#ffffff)}.rz{fill:var(--na-color-bg-raised,#eeeeeb)}.ink{fill:var(--na-color-ink,#1a1a18)}
+.mut{fill:var(--na-color-ink-muted,#55534d)}.acc{fill:var(--na-color-accent,#7a2e1c)}.bd{fill:var(--na-color-border,#cfccc3)}
+.pi{fill:var(--na-color-plate-ink,#ffffff)}.pm{fill:var(--na-color-plate-ink-muted,#a8a29a)}.pbg{fill:var(--na-color-plate-bg,#0b0b0b)}.pbd{fill:var(--na-color-plate-border,#2c2a27)}.pac{fill:var(--na-color-plate-accent,#d06a4e)}
+.ln{stroke:var(--na-color-ink,#1a1a18);fill:none}.lm{stroke:var(--na-color-ink-muted,#55534d);fill:none}
+.la{stroke:var(--na-color-accent,#7a2e1c);fill:none}.lb{stroke:var(--na-color-border,#cfccc3);fill:none}
+.tb{font-weight:700;font-size:54px;font-family:SFMono-Regular,Consolas,"Liberation Mono",Menlo,monospace}.tm{font-weight:500;font-size:13px;font-family:SFMono-Regular,Consolas,"Liberation Mono",Menlo,monospace}.t{font-weight:500;font-size:15px;font-family:SFMono-Regular,Consolas,"Liberation Mono",Menlo,monospace}.ts{font-weight:500;font-size:12px;font-family:SFMono-Regular,Consolas,"Liberation Mono",Menlo,monospace}.tl{font-weight:500;font-size:20px;font-family:SFMono-Regular,Consolas,"Liberation Mono",Menlo,monospace}
+</style><defs>
+<pattern id="na-hatch-accent" width="9" height="9" patternUnits="userSpaceOnUse" patternTransform="rotate(20)"><rect width="2.6" height="9" fill="var(--na-color-accent,#7a2e1c)"/></pattern>
+<pattern id="na-hatch-ink" width="9" height="9" patternUnits="userSpaceOnUse" patternTransform="rotate(20)"><rect width="2.6" height="9" fill="var(--na-color-ink,#1a1a18)"/></pattern>
+</defs><defs><filter id="na-stamp" x="-10%" y="-10%" width="120%" height="120%">
+<feTurbulence type="fractalNoise" baseFrequency="0.035" numOctaves="2" seed="7" result="n"/>
+<feDisplacementMap in="SourceGraphic" in2="n" scale="5" xChannelSelector="R" yChannelSelector="G" result="d"/>
+<feTurbulence type="fractalNoise" baseFrequency="0.85" numOctaves="1" seed="3" result="g"/>
+<feColorMatrix in="g" type="matrix" values="0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  -14 0 0 0 10.6" result="holes"/>
+<feComposite in="d" in2="holes" operator="in"/></filter></defs>
+<rect class="bg" width="680" height="440"/>
+<g filter="url(#na-stamp)" transform="rotate(-20 340 220)">
+<rect class="la" x="70" y="142" width="540" height="156" stroke-width="7"/>
+<rect class="la" x="84" y="156" width="512" height="128" stroke-width="2.5"/>
+<text class="tb acc" x="340" y="230" text-anchor="middle">NOT APPLICABLE</text>
+<text class="tl acc" x="340" y="266" text-anchor="middle">REVIEWED 24.10.2026</text></g></svg>
