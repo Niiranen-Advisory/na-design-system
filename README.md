@@ -30,6 +30,7 @@ Open `examples/spice.html` to see every piece and switch brand.
 | `scripts/cut-artifacts.mjs` | Regenerates `assets/artifacts/`. No dependencies |
 | `scripts/cut-brand.mjs` | Derives the dark monogram and plate icon from the master |
 | `examples/spice.html` | Demo page |
+| `powerpoint/DECK-SPEC.md` | Rules for PowerPoint decks: diagrams, screenshots, tables, accent use, covers |
 
 ## Regenerate artifacts
 
@@ -41,7 +42,7 @@ The text in the artifacts lives in `CONTENT` at the top of the script. Never edi
 
 ## Status
 
-Early. The tokens, palettes and brand marks are carried over unchanged from the working repository. The spice kit is new and is the first thing built for this one. Still to come once cleaned: the full rules document, the shadcn adapter, the presentation layer and the deck templates.
+Early. The tokens, palettes and brand marks are carried over unchanged from the working repository. The spice kit is new and is the first thing built for this one. Still to come once cleaned: the full rules document, the shadcn adapter, the presentation layer and the deck templates themselves. The deck rules are in `powerpoint/`.
 
 ## License
 
