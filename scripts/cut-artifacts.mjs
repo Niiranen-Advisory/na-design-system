@@ -3,6 +3,11 @@
   Cuts the N/A artifact SVGs into assets/artifacts/.
 
     node scripts/cut-artifacts.mjs
+    node scripts/cut-artifacts.mjs --content my.json --out some/dir --only stamp,tracked
+
+  --content  JSON merged over CONTENT below (objects merge, arrays and strings replace)
+  --out      output directory (default assets/artifacts)
+  --only     comma-separated artifact names
 
   No dependencies. Every colour is a CSS custom property with a baked-in
   fallback, so a file inlined in a page follows the page's brand tokens,
@@ -15,12 +20,14 @@
   The crop outlines the monogram paths from assets/brand/na-monogram.svg.
 */
 import { readFileSync, writeFileSync, mkdirSync } from 'node:fs';
-import { dirname, join } from 'node:path';
+import { dirname, join, resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { SLASH, TAN, PALETTES, MONO, v, f, esc } from './lib/palettes.mjs';
 
 const ROOT = join(dirname(fileURLToPath(import.meta.url)), '..');
-const OUT = join(ROOT, 'assets', 'artifacts');
+const arg = (name) => { const i = process.argv.indexOf(name); return i > 0 ? process.argv[i + 1] : null; };
+const OUT = arg('--out') ? resolve(arg('--out')) : join(ROOT, 'assets', 'artifacts');
+const ONLY = arg('--only') ? new Set(arg('--only').split(',')) : null;
 mkdirSync(OUT, { recursive: true });
 
 
@@ -76,8 +83,19 @@ const CONTENT = {
     ],
     hot: [3, 3], // the cell that reads null
   },
-  chart: { keys: ['hatch', 'solid ink', 'accent'], groups: ['Q1', 'Q2', 'Q3', 'Q4'] },
+  chart: {
+    keys: ['hatch', 'solid ink', 'accent'], groups: ['Q1', 'Q2', 'Q3', 'Q4'],
+    values: [[190, 120, 70], [230, 150, 100], [150, 170, 140], [260, 110, 60]], // bar heights, 0-260, one row per group
+  },
 };
+
+const merge = (base, extra) => {
+  for (const [k, val] of Object.entries(extra)) {
+    if (val && typeof val === 'object' && !Array.isArray(val) && base[k] && typeof base[k] === 'object') merge(base[k], val);
+    else base[k] = val;
+  }
+};
+if (arg('--content')) merge(CONTENT, JSON.parse(readFileSync(resolve(arg('--content')), 'utf8')));
 
 function make(p) {
   const style = `<style>
@@ -212,7 +230,7 @@ ${c.options.map((o, i) => opt(xs[i], o, i === c.checked)).join('')}
   // HATCH CHART: series by fill type, not by hue
   const hatchChart = () => {
     const W = 680, H = 440, base = 360, x0 = 80, c = CONTENT.chart;
-    const vals = [[190, 120, 70], [230, 150, 100], [150, 170, 140], [260, 110, 60]];
+    const vals = c.values;
     const fills = ['url(#na-hatch-accent)', v('ink', p.ink), v('accent', p.accent)];
     let b = `<rect class="bg" width="${W}" height="${H}"/><line class="ln" x1="${x0 - 20}" x2="${W - 40}" y1="${base}" y2="${base}" stroke-width="2.5"/>`;
     vals.forEach((g, gi) => {
@@ -288,6 +306,7 @@ ${c.options.map((o, i) => opt(xs[i], o, i === c.checked)).join('')}
 let n = 0;
 for (const [pal, p] of Object.entries(PALETTES)) {
   for (const [name, fn] of Object.entries(make(p))) {
+    if (ONLY && !ONLY.has(name)) continue;
     writeFileSync(join(OUT, `${name}${pal === 'dark' ? '-dark' : ''}.svg`), fn());
     n++;
   }
