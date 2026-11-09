@@ -26,10 +26,13 @@ Open `examples/spice.html` to see every piece and switch brand.
 | `spice.css` | Window, cut, hatch, glyph |
 | `SPICE.md` | The rules for using them |
 | `assets/brand/` | Monogram (light, reversed, dark, and the square plate), wordmark and favicon. See its README |
-| `assets/artifacts/` | Generated SVGs: cut, crop, hatch band, receipt, coverage, checkbox, sheet, hatch chart. Each in light and `-dark` |
+| `assets/artifacts/` | Generated SVGs: cut, crop, hatch band, receipt, coverage, checkbox, sheet, hatch chart, stamp, tracked changes, terminal. Each in light and `-dark` |
 | `scripts/cut-artifacts.mjs` | Regenerates `assets/artifacts/`. No dependencies |
+| `assets/mockups/` | Laptop frame, app screens and composed mockups, light and dark, with the embedded fonts |
+| `scripts/cut-mockups.mjs` | Regenerates `assets/mockups/`, optionally around a screenshot. No dependencies |
 | `scripts/cut-brand.mjs` | Derives the dark monogram and plate icon from the master |
 | `examples/spice.html` | Demo page |
+| `examples/artifacts-review.html` | Every artifact and mockup, light and dark, side by side |
 | `powerpoint/DECK-SPEC.md` | Rules for PowerPoint decks: diagrams, screenshots, tables, accent use, covers |
 
 ## Regenerate artifacts

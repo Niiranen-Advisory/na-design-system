@@ -21,4 +21,4 @@ Nothing in the licence grants a right to use these marks. Seeing a mark in a fil
 
 ## Third-party material
 
-The fonts DM Serif Display and IBM Plex Serif are not included. They are loaded from Google Fonts and are licensed separately by their authors under the SIL Open Font License.
+The fonts DM Serif Display and IBM Plex Serif are loaded from Google Fonts by the site files. Three Latin-subset woff2 files of them (DM Serif Display 400, IBM Plex Serif 400 and 600) are included in `assets/mockups/fonts/` only so the composed mockups can embed them. They are licensed separately by their authors under the SIL Open Font License, and the licence texts sit beside them. The CC BY-NC-ND licence above does not apply to those font files.

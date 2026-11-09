@@ -17,13 +17,12 @@
 import { readFileSync, writeFileSync, mkdirSync } from 'node:fs';
 import { dirname, join } from 'node:path';
 import { fileURLToPath } from 'node:url';
+import { SLASH, TAN, PALETTES, MONO, v, f, esc } from './lib/palettes.mjs';
 
 const ROOT = join(dirname(fileURLToPath(import.meta.url)), '..');
 const OUT = join(ROOT, 'assets', 'artifacts');
 mkdirSync(OUT, { recursive: true });
 
-const SLASH = 20; // degrees, the brand slash
-const TAN = Math.tan((SLASH * Math.PI) / 180);
 
 // ---- content ---------------------------------------------------------
 const CONTENT = {
@@ -59,34 +58,35 @@ const CONTENT = {
       ['5', 'Trial', 'N/A', 'N/A', 'N/A'],
     ],
   },
+  stamp: { text: 'NOT APPLICABLE', sub: 'REVIEWED 24.10.2026' },
+  tracked: {
+    caption: 'LICENSING TERMS · CLAUSE 4.2',
+    before: 'Included in Microsoft 365 E3',
+    after: 'Requires Copilot Studio capacity',
+    note: 'changed 24.10.2026',
+  },
+  terminal: {
+    cmd: 'pac admin list --type Production',
+    head: ['ENVIRONMENT', 'TYPE', 'MANAGED', 'CAPACITY'],
+    rows: [
+      ['Sales Hub PROD', 'Production', 'true', '48.2 GB'],
+      ['Field Service', 'Production', 'true', '12.9 GB'],
+      ['HR Onboarding', 'Production', 'false', 'N/A'],
+      ['Finance', 'Production', 'true', 'null'],
+    ],
+    hot: [3, 3], // the cell that reads null
+  },
   chart: { keys: ['hatch', 'solid ink', 'accent'], groups: ['Q1', 'Q2', 'Q3', 'Q4'] },
 };
-
-// ---- palettes (fallbacks baked into each file) -----------------------
-const PALETTES = {
-  light: {
-    bg: '#ffffff', raised: '#eeeeeb', ink: '#1a1a18', muted: '#55534d', border: '#cfccc3',
-    accent: '#7a2e1c', plateBg: '#0b0b0b', plateBorder: '#2c2a27', plateAccent: '#d06a4e',
-  },
-  dark: {
-    bg: '#181110', raised: '#241a17', ink: '#efe9e6', muted: '#a89f9a', border: '#3a2c27',
-    accent: '#e07a4f', plateBg: '#000000', plateBorder: '#262320', plateAccent: '#e07a4f',
-  },
-};
-
-const MONO = 'SFMono-Regular,Consolas,"Liberation Mono",Menlo,monospace';
-const v = (name, fb) => `var(--na-color-${name},${fb})`;
-const f = (n) => +n.toFixed(1);
-const esc = (s) => String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
 
 function make(p) {
   const style = `<style>
 .bg{fill:${v('bg', p.bg)}}.rz{fill:${v('bg-raised', p.raised)}}.ink{fill:${v('ink', p.ink)}}
 .mut{fill:${v('ink-muted', p.muted)}}.acc{fill:${v('accent', p.accent)}}.bd{fill:${v('border', p.border)}}
-.pbg{fill:${v('plate-bg', p.plateBg)}}.pbd{fill:${v('plate-border', p.plateBorder)}}.pac{fill:${v('plate-accent', p.plateAccent)}}
+.pi{fill:${v('plate-ink', p.plateInk)}}.pm{fill:${v('plate-ink-muted', p.plateMuted)}}.pbg{fill:${v('plate-bg', p.plateBg)}}.pbd{fill:${v('plate-border', p.plateBorder)}}.pac{fill:${v('plate-accent', p.plateAccent)}}
 .ln{stroke:${v('ink', p.ink)};fill:none}.lm{stroke:${v('ink-muted', p.muted)};fill:none}
 .la{stroke:${v('accent', p.accent)};fill:none}.lb{stroke:${v('border', p.border)};fill:none}
-.t{font:500 15px ${MONO}}.ts{font:500 12px ${MONO}}.tl{font:500 20px ${MONO}}
+.tb{font-weight:700;font-size:54px;font-family:${MONO}}.tm{font-weight:500;font-size:13px;font-family:${MONO}}.t{font-weight:500;font-size:15px;font-family:${MONO}}.ts{font-weight:500;font-size:12px;font-family:${MONO}}.tl{font-weight:500;font-size:20px;font-family:${MONO}}
 </style>`;
   const defs = `<defs>
 <pattern id="na-hatch-accent" width="9" height="9" patternUnits="userSpaceOnUse" patternTransform="rotate(${SLASH})"><rect width="2.6" height="9" fill="${v('accent', p.accent)}"/></pattern>
@@ -229,7 +229,60 @@ ${c.options.map((o, i) => opt(xs[i], o, i === c.checked)).join('')}
     return svg(W, H, b, 'Bar chart with three series distinguished by hatch, solid ink and accent fill; illustrative values');
   };
 
-  return { cut, crop, 'hatch-band': hatchBand, receipt, coverage, checkbox, sheet, 'hatch-chart': hatchChart };
+  // STAMP: an inked impression on the slash. Edges are roughened by displacement and a few
+  // speckle holes; the ink stays one flat colour.
+  const stamp = () => {
+    const W = 680, H = 440, c = CONTENT.stamp, cx = W / 2, cy = H / 2;
+    return svg(W, H, `<defs><filter id="na-stamp" x="-10%" y="-10%" width="120%" height="120%">
+<feTurbulence type="fractalNoise" baseFrequency="0.035" numOctaves="2" seed="7" result="n"/>
+<feDisplacementMap in="SourceGraphic" in2="n" scale="5" xChannelSelector="R" yChannelSelector="G" result="d"/>
+<feTurbulence type="fractalNoise" baseFrequency="0.85" numOctaves="1" seed="3" result="g"/>
+<feColorMatrix in="g" type="matrix" values="0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  -14 0 0 0 10.6" result="holes"/>
+<feComposite in="d" in2="holes" operator="in"/></filter></defs>
+<rect class="bg" width="${W}" height="${H}"/>
+<g filter="url(#na-stamp)" transform="rotate(${-SLASH} ${cx} ${cy})">
+<rect class="la" x="${cx - 270}" y="${cy - 78}" width="540" height="156" stroke-width="7"/>
+<rect class="la" x="${cx - 256}" y="${cy - 64}" width="512" height="128" stroke-width="2.5"/>
+<text class="tb acc" x="${cx}" y="${cy + 10}" text-anchor="middle">${esc(c.text)}</text>
+<text class="tl acc" x="${cx}" y="${cy + 46}" text-anchor="middle">${esc(c.sub)}</text></g>`,
+      `Ink stamp reading ${c.text}, set at the slash angle`);
+  };
+
+  // TRACKED CHANGES: old wording struck, new wording inserted in the accent, change bar in the margin
+  const tracked = () => {
+    const W = 680, H = 440, c = CONTENT.tracked;
+    return svg(W, H, `<rect class="bg" width="${W}" height="${H}"/>
+<rect class="ln" x="20" y="20" width="${W - 40}" height="${H - 40}" stroke-width="2"/>
+<text class="ts mut" x="60" y="62">${esc(c.caption)}</text>
+<line class="ln" x1="52" x2="${W - 40}" y1="80" y2="80" stroke-width="2.5"/>
+<rect class="acc" x="36" y="116" width="5" height="148"/>
+<text class="t mut" x="60" y="150">${esc(c.before)}</text>
+<line class="lm" x1="58" x2="${60 + c.before.length * 9.0}" y1="145" y2="145" stroke-width="2"/>
+<text class="t acc" x="60" y="224">${esc(c.after)}</text>
+<line class="la" x1="58" x2="${60 + c.after.length * 9.0}" y1="232" y2="232" stroke-width="2"/>
+<text class="ts mut" x="60" y="${H - 52}">${esc(c.note)}</text>`,
+      `Licensing sentence where the old wording ${c.before} is struck through and the new wording ${c.after} is inserted`);
+  };
+
+  // TERMINAL: PAC CLI style table on the plate; one cell reads null
+  const terminal = () => {
+    const W = 680, H = 440, c = CONTENT.terminal, xs = [40, 232, 360, 470], rh = 44, y0 = 156;
+    let b = `<rect class="pbg" width="${W}" height="${H}"/><rect x="0.5" y="0.5" width="${W - 1}" height="${H - 1}" stroke-width="1" style="fill:none;stroke:${v('plate-border', p.plateBorder)}"/>
+<text class="t pac" x="32" y="56">&gt;</text><text class="t pi" x="52" y="56">${esc(c.cmd)}</text>`;
+    c.head.forEach((h, i) => { b += `<text class="ts pm" x="${xs[i]}" y="${y0 - 16}">${esc(h)}</text>`; });
+    b += `<rect class="pm" x="32" y="${y0 - 4}" width="${W - 64}" height="1"/>`;
+    c.rows.forEach((r, ri) => {
+      const y = y0 + 32 + ri * rh;
+      r.forEach((cell, ci) => {
+        const hot = ri === c.hot[0] && ci === c.hot[1];
+        if (hot) b += `<rect class="pac" x="${xs[ci] - 8}" y="${y - 22}" width="${cell.length * 9 + 16}" height="32"/>`;
+        b += `<text class="t ${hot ? '' : 'pi'}" ${hot ? `style="fill:${v('plate-bg', p.plateBg)}"` : ''} x="${xs[ci]}" y="${y}">${esc(cell)}</text>`;
+      });
+    });
+    return svg(W, H, b, `PAC CLI output where one capacity cell reads ${c.rows[c.hot[0]][c.hot[1]]}`);
+  };
+
+  return { cut, crop, 'hatch-band': hatchBand, receipt, coverage, checkbox, sheet, 'hatch-chart': hatchChart, stamp, tracked, terminal };
 }
 
 let n = 0;
