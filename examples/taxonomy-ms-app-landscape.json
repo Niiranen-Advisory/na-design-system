@@ -1,0 +1,31 @@
+{
+  "brand": "perspectives",
+  "size": [1600, 1200],
+  "title": null,
+  "columns": 2,
+  "tileColumns": 2,
+  "source": "Snapshot, October 2026. Statuses change.",
+  "groups": [
+    { "name": "Power Platform core", "items": [
+      { "name": "Canvas apps", "status": "ga" },
+      { "name": "Model-driven apps", "status": "ga" },
+      { "name": "Power Pages", "status": "ga" },
+      { "name": "Power Apps mobile and native apps", "status": "ga", "qualifier": "GA / Preview respectively" }
+    ]},
+    { "name": "Power Platform AI-built", "items": [
+      { "name": "Plan Designer", "status": "ga" },
+      { "name": "Power Apps Vibe", "status": "retiring", "qualifier": "2026-11-30" },
+      { "name": "Generative Pages", "status": "ga", "qualifier": "Designer geographically limited" },
+      { "name": "Code Apps", "status": "ga" }
+    ]},
+    { "name": "Microsoft 365 / Copilot", "items": [
+      { "name": "Copilot Studio apps", "status": "preview" },
+      { "name": "App Builder agent", "status": "retiring", "qualifier": "2026-11-30" },
+      { "name": "Copilot Cowork /app", "status": "preview" },
+      { "name": "Managed Apps / Copilot Managed Runtime", "status": "preview" }
+    ]},
+    { "name": "Fabric", "items": [
+      { "name": "Fabric Apps", "status": "preview" }
+    ]}
+  ]
+}

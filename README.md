@@ -31,6 +31,11 @@ Open `examples/spice.html` to see every piece and switch brand.
 | `assets/mockups/` | Laptop frame, app screens and composed mockups, light and dark, with the embedded fonts |
 | `scripts/cut-mockups.mjs` | Regenerates `assets/mockups/`, optionally around a screenshot. No dependencies |
 | `scripts/cut-brand.mjs` | Derives the dark monogram and plate icon from the master |
+| `ARTIFACTS.md` | How an agent makes a one-off visual from facts: workflow, Taxonomy Grid, checks |
+| `scripts/make-taxonomy-grid.mjs` | Content JSON to one standalone HTML grid, editable in the browser with `#edit` |
+| `scripts/shoot.mjs` | HTML to exact-size PNG with headless Chrome, fails on wrong size or overflow |
+| `examples/taxonomy-ms-app-landscape.*` | Reference: 13 Microsoft app types in four groups (JSON, HTML, PNG), October 2026 snapshot |
+| `AGENTS.md` | Short entry point for coding agents |
 | `examples/spice.html` | Demo page |
 | `examples/artifacts-review.html` | Every artifact and mockup, light and dark, side by side |
 | `powerpoint/DECK-SPEC.md` | Rules for PowerPoint decks: diagrams, screenshots, tables, accent use, covers |
