@@ -24,7 +24,7 @@ N/A is what you write when a question does not apply. The slash is the load-bear
 | Cut | `.na-cut` (CSS), `cut.svg` | Masthead, section divider, deck divider, OG image | Behind running text |
 | Crop | `crop.svg` | Deck cover, identity plate, 404 | Anything small: it needs room to bleed |
 | Hatch | `.na-hatch` (CSS), `hatch-band.svg` | Strips, chart series, the offset behind a window | Tone or depth. It is a fill, not a shadow substitute for every box |
-| Glyph | `.na-glyph` (CSS) | A quiet mark behind one section header | Carrying meaning, or repeated down a page |
+| Glyph | `.na-glyph` (CSS), twelve glyphs, see Glyphs | A quiet mark behind one section header | Carrying meaning, or repeated down a page |
 | Examples | `receipt`, `coverage`, `checkbox`, `sheet`, `hatch-chart` (SVG) | Showing a specific idea as a picture: footnote chains, overlap, "not applicable" | Filler. Each one should illustrate its section |
 | Stamp | `stamp.svg` | Closing a section on a verdict (`NOT APPLICABLE`, `REVIEWED 24.10.2026`), an OG image | Decoration. The words must be a verdict someone could actually give |
 | Tracked changes | `tracked.svg` | Showing that wording changed: old struck, new inserted in the accent | Real quotations. The sentences are illustrative |
@@ -50,6 +50,29 @@ Composed files are baked: every `var()` is resolved to its fallback and the two 
 
 The border and fill of the window are drawn by `::after`, above the hatch on `::before`. A negative-z pseudo-element paints over its parent's own border, so the frame cannot be the element's border. Keep this structure when changing the component, or the hatch will draw over the window edge.
 
+## Glyphs
+
+Twelve glyphs. Ten are drawn: a 240 box, a 22 stroke, butt ends, and every diagonal at `--na-slash-angle`. Two are typeset in the display face through `data-glyph`.
+
+| Glyph | Markup | Goes with |
+| --- | --- | --- |
+| Section sign | `data-glyph="§"` | Licensing terms, product terms, contract and renewal content |
+| Asterisk | `.na-glyph--asterisk` | Exceptions, caveats, footnotes |
+| Not equal | `.na-glyph--neq` | A vendor claim against what a customer can obtain |
+| Sum | `.na-glyph--sum` | Pricing and cost |
+| At most | `.na-glyph--lte` | Limits, capacity, entitlements |
+| Up and down | `.na-glyph--updown` | Trade-offs |
+| Paragraph | `.na-glyph--paragraph` | Long-form analysis |
+| Double slash | `.na-glyph--dslash` | Field notes, commentary |
+| Prompt | `.na-glyph--prompt` | Governance as code, anything run from a terminal |
+| Question mark | `data-glyph="?"` | Open questions, intake |
+| Therefore | `.na-glyph--therefore` | Conclusions, recommendations |
+| Null | `.na-glyph--null` | Empty and error states, "not applicable" |
+
+The pairing is a habit for the author, not a code for the reader. Rule 5 still holds: a glyph carries no meaning, and the heading says what the section is. One glyph per view (rule 1). If no row fits the content, use no glyph. Do not add a thirteenth without a pass like the one that chose these.
+
+Watermark strength is 9% ink mixed into the ground, and 16% inside `.na-plate`, because 9% disappears on a near-black ground. A dark brand sets `--na-glyph-strength` itself.
+
 ## Artifacts
 
 `assets/artifacts/*.svg` are generated. Every color is a CSS variable with a baked fallback, so:
@@ -63,5 +86,4 @@ Text in them is content: change `CONTENT` in `scripts/cut-artifacts.mjs` and re-
 
 ## Provisional
 
-- **Glyph set.** `§`, `∅` and `≠` drawn on the slash, and `?`, are the starter set. Which glyph belongs with which kind of content is not decided and needs its own pass. Do not read the set as final.
 - **Tally and slash field** were tried and dropped for now. They are not in the kit.
