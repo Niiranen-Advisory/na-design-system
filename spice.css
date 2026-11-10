@@ -236,12 +236,14 @@
 /* ---------------------------------------------------------------- glyph */
 
 /*
-  A glyph at watermark strength behind a section. Use data-glyph for a
-  typeset mark, or a --null / --neq modifier for the two drawn ones, whose
-  slash is the brand slash. Decorative only: never put meaning in it.
+  A glyph at watermark strength behind a section. Use data-glyph for the two
+  typeset marks (§ and ?), or a modifier for the ten drawn ones. Every drawn
+  glyph shares one construction: a 240 box, a 22 stroke, butt ends, and
+  diagonals at the brand slash. Which glyph goes with which kind of content
+  is in SPICE.md. Decorative only: never put meaning in it.
 */
 .na-glyph {
-  --_wm: var(--na-glyph-color, color-mix(in srgb, var(--na-color-ink, #1a1a18) 9%, var(--na-color-bg, #fff)));
+  --_wm: var(--na-glyph-color, color-mix(in srgb, var(--na-color-ink, #1a1a18) var(--na-glyph-strength, 9%), var(--na-color-bg, #fff)));
   --_size: var(--na-glyph-size, clamp(10rem, 32vw, 24rem));
   position: relative;
   isolation: isolate;
@@ -259,8 +261,16 @@
   pointer-events: none;
   user-select: none;
 }
-.na-glyph--null::before,
-.na-glyph--neq::before {
+.na-glyph--asterisk::before,
+.na-glyph--neq::before,
+.na-glyph--sum::before,
+.na-glyph--lte::before,
+.na-glyph--updown::before,
+.na-glyph--paragraph::before,
+.na-glyph--dslash::before,
+.na-glyph--prompt::before,
+.na-glyph--therefore::before,
+.na-glyph--null::before {
   content: "";
   width: var(--_size);
   height: var(--_size);
@@ -268,11 +278,50 @@
   -webkit-mask: var(--_mask) center / contain no-repeat;
   mask: var(--_mask) center / contain no-repeat;
 }
-.na-glyph--null {
-  --_mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 240 240' fill='none' stroke='black' stroke-width='22'%3E%3Ccircle cx='120' cy='120' r='92'/%3E%3Cline x1='52' y1='214' x2='188' y2='26'/%3E%3C/svg%3E");
+/* Asterisk: exceptions */
+.na-glyph--asterisk {
+  --_mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 240 240' fill='none' stroke='black' stroke-width='22' stroke-miterlimit='6'%3E%3Cline x1='88.5' y1='206.5' x2='151.5' y2='33.5'/%3E%3Cline x1='29.4' y1='136.0' x2='210.6' y2='104.0'/%3E%3Cline x1='60.9' y1='49.5' x2='179.1' y2='190.5'/%3E%3C/svg%3E");
 }
+/* Not equal: claim and reality */
 .na-glyph--neq {
-  --_mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 240 240' fill='none' stroke='black' stroke-width='22'%3E%3Cline x1='40' y1='92' x2='200' y2='92'/%3E%3Cline x1='40' y1='150' x2='200' y2='150'/%3E%3Cline x1='86' y1='214' x2='154' y2='26'/%3E%3C/svg%3E");
+  --_mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 240 240' fill='none' stroke='black' stroke-width='22' stroke-miterlimit='6'%3E%3Cline x1='40' y1='92' x2='200' y2='92'/%3E%3Cline x1='40' y1='150' x2='200' y2='150'/%3E%3Cline x1='85.8' y1='214' x2='154.2' y2='26'/%3E%3C/svg%3E");
+}
+/* Sum: pricing */
+.na-glyph--sum {
+  --_mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 240 240' fill='none' stroke='black' stroke-width='22' stroke-miterlimit='6'%3E%3Cpolyline points='188,74 188,40 56,40 128,120 56,200 188,200 188,166'/%3E%3C/svg%3E");
+}
+/* At most: limits */
+.na-glyph--lte {
+  --_mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 240 240' fill='none' stroke='black' stroke-width='22' stroke-miterlimit='6'%3E%3Cpolyline points='190,36 58,94 190,152'/%3E%3Cline x1='50' y1='200' x2='190' y2='200'/%3E%3C/svg%3E");
+}
+/* Up and down: trade-offs */
+.na-glyph--updown {
+  --_mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 240 240' fill='none' stroke='black' stroke-width='22' stroke-miterlimit='6'%3E%3Cpolygon points='20,170 70,74 120,170' fill='black' stroke='none'/%3E%3Cpolygon points='120,70 220,70 170,166' fill='black' stroke='none'/%3E%3C/svg%3E");
+}
+/* Paragraph: analysis */
+.na-glyph--paragraph {
+  --_mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 240 240' fill='none' stroke='black' stroke-width='22' stroke-miterlimit='6'%3E%3Cline x1='84' y1='58' x2='204' y2='58'/%3E%3Cline x1='36' y1='100' x2='204' y2='100'/%3E%3Cline x1='36' y1='142' x2='204' y2='142'/%3E%3Cline x1='36' y1='184' x2='136' y2='184'/%3E%3C/svg%3E");
+}
+/* Double slash: notes from the field */
+.na-glyph--dslash {
+  --_mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 240 240' fill='none' stroke='black' stroke-width='22' stroke-miterlimit='6'%3E%3Cpolygon points='42,214 68,214 136,26 110,26' fill='black' stroke='none'/%3E%3Cpolygon points='104,214 130,214 198,26 172,26' fill='black' stroke='none'/%3E%3C/svg%3E");
+}
+/* Prompt: governance as code */
+.na-glyph--prompt {
+  --_mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 240 240' fill='none' stroke='black' stroke-width='22' stroke-miterlimit='6'%3E%3Cpolyline points='44,56 112,120 44,184'/%3E%3Cline x1='130' y1='190' x2='204' y2='190'/%3E%3C/svg%3E");
+}
+/* Therefore: the conclusion */
+.na-glyph--therefore {
+  --_mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 240 240' fill='none' stroke='black' stroke-width='22' stroke-miterlimit='6'%3E%3Crect x='92' y='40' width='56' height='56' fill='black' stroke='none'/%3E%3Crect x='34' y='144' width='56' height='56' fill='black' stroke='none'/%3E%3Crect x='150' y='144' width='56' height='56' fill='black' stroke='none'/%3E%3C/svg%3E");
+}
+/* Null: not applicable */
+.na-glyph--null {
+  --_mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 240 240' fill='none' stroke='black' stroke-width='22' stroke-miterlimit='6'%3E%3Ccircle cx='120' cy='120' r='84'/%3E%3Cline x1='91.3' y1='198.9' x2='148.7' y2='41.1'/%3E%3C/svg%3E");
+}
+/* 9% disappears on a near-black ground, so the plate gets a stronger mix. */
+.na-plate .na-glyph,
+.na-glyph.na-plate {
+  --na-glyph-strength: 16%;
 }
 .na-glyph--accent {
   --na-glyph-color: color-mix(in srgb, var(--na-color-accent, #7a2e1c) 16%, var(--na-color-bg, #fff));
