@@ -1,0 +1,66 @@
+{
+  "tool": "scripts/brand-filter.py",
+  "filterVersion": "1",
+  "brand": "default",
+  "brandColors": {
+    "shadow": "#1a1a18",
+    "light": "#ffffff",
+    "accent": "#7a2e1c"
+  },
+  "darkBrand": false,
+  "crop": "band",
+  "geometry": {
+    "box": [
+      0,
+      256,
+      1536,
+      512
+    ],
+    "size": [
+      1536,
+      512
+    ]
+  },
+  "format": "webp",
+  "hatch": false,
+  "safeAreaInset": 0.08,
+  "source": {
+    "file": "na-fcd19f2b.png",
+    "sha256": "dc5441a4b71064e8b066d8150ba79e829560aca8dd2082ea3004e032a06dc75d",
+    "sidecar": {
+      "tool": "scripts/generate-image.mjs",
+      "toolVersion": "1",
+      "date": "2026-11-11T20:00:32.860Z",
+      "seed": "na-services-2026-11#1",
+      "axes": {
+        "surface": "plaster",
+        "light": "window",
+        "composition": "wide"
+      },
+      "prompt": "Photograph of a smooth white plaster wall, fine matte texture, soft daylight from a window, matte. Subject: one single straight diagonal cut across the plain surface, leaning like a forward slash about 20 degrees off vertical, deep oxblood paper visible where it opens. Wide framing with a lot of empty space around the cut. Contemporary, restrained, intentional. Palette strictly white, black, neutral grey and one deep oxblood (#7a2e1c). Plain white, not grey, paper. No text, no letters, no logos, no people, no glow, no gradients, no neon, no 3D blobs, no retro or vintage styling, no violence connotations. Generous empty space.",
+      "model": "openai/gpt-image-2",
+      "quality": "low",
+      "aspect": "3:2",
+      "cost": 0.00549,
+      "costReported": true,
+      "usage": {
+        "cost": 0.00549,
+        "images": 1
+      },
+      "sha256": "dc5441a4b71064e8b066d8150ba79e829560aca8dd2082ea3004e032a06dc75d"
+    }
+  },
+  "verify": {
+    "levels": {
+      "blackPoint": 0.0,
+      "whitePoint": 0.9373,
+      "whitePct": 90.0
+    },
+    "paperDeltaE": 2.23,
+    "accentDeltaE": 3.32,
+    "accentAreaPct": 0.2,
+    "paperMax": 4.0,
+    "accentMax": 12.0,
+    "pass": true
+  }
+}

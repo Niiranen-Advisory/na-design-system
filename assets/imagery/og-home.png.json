@@ -1,0 +1,89 @@
+{
+  "tool": "_src/build.py + _src/shoot.sh (agent-written, E2)",
+  "date": "2026-11-11",
+  "kind": "composition, not a filter output",
+  "size": [
+    1200,
+    630
+  ],
+  "background": {
+    "file": "na-439be948.default.hero.webp",
+    "fit": "CSS object-fit cover, centred (trims about 7% of the 16:9 height)",
+    "sidecar": {
+      "tool": "scripts/brand-filter.py",
+      "filterVersion": "1",
+      "brand": "default",
+      "brandColors": {
+        "shadow": "#1a1a18",
+        "light": "#ffffff",
+        "accent": "#7a2e1c"
+      },
+      "darkBrand": false,
+      "crop": "hero",
+      "geometry": {
+        "box": [
+          0,
+          80,
+          1536,
+          864
+        ],
+        "size": [
+          1536,
+          864
+        ]
+      },
+      "format": "webp",
+      "hatch": false,
+      "safeAreaInset": 0.08,
+      "source": {
+        "file": "na-439be948.png",
+        "sha256": "c8c69d7d80ce086c641f5ba3984a40b30216a3883352432859b93e5e55347a17",
+        "sidecar": {
+          "tool": "scripts/generate-image.mjs",
+          "toolVersion": "1",
+          "date": "2026-11-11T20:00:35.116Z",
+          "seed": "na-og-home-2026-11#1",
+          "axes": {
+            "surface": "paper",
+            "light": "overcast",
+            "composition": "wide"
+          },
+          "prompt": "Macro photograph of paper edges and card stock, shallow depth of field, natural soft overcast daylight. Subject: one single straight diagonal cut across the plain surface, leaning like a forward slash about 20 degrees off vertical, deep oxblood paper visible where it opens. Wide framing with a lot of empty space around the cut. Contemporary, restrained, intentional. Palette strictly white, black, neutral grey and one deep oxblood (#7a2e1c). Plain white, not grey, paper. No text, no letters, no logos, no people, no glow, no gradients, no neon, no 3D blobs, no retro or vintage styling, no violence connotations. Generous empty space.",
+          "model": "openai/gpt-image-2",
+          "quality": "low",
+          "aspect": "3:2",
+          "cost": 0.005485,
+          "costReported": true,
+          "usage": {
+            "cost": 0.005485,
+            "images": 1
+          },
+          "sha256": "c8c69d7d80ce086c641f5ba3984a40b30216a3883352432859b93e5e55347a17"
+        }
+      },
+      "verify": {
+        "levels": {
+          "blackPoint": 0.0,
+          "whitePoint": 0.9073,
+          "whitePct": 90.0
+        },
+        "paperDeltaE": 0.37,
+        "accentDeltaE": 5.66,
+        "accentAreaPct": 1.11,
+        "paperMax": 4.0,
+        "accentMax": 12.0,
+        "pass": true
+      }
+    }
+  },
+  "wordmark": {
+    "file": "assets/na-wordmark.svg",
+    "source": "na-design-system assets/brand/na-wordmark.svg @8eae405, unedited, inlined, currentColor = #1a1a18",
+    "width": 470,
+    "position": "bottom left"
+  },
+  "renderer": "headless Chromium (ms-playwright chromium-1234), device scale 1",
+  "page": "og/og-home-na-439be948.html",
+  "sha256": "637f515a1de410281ee755edf438cf82cc346a9baac1629c3fdd8e609b0f294f",
+  "status": "agent proposal, not approved"
+}

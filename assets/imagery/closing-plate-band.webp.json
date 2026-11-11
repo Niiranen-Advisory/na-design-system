@@ -1,0 +1,64 @@
+{
+  "tool": "scripts/brand-filter.py",
+  "filterVersion": "1",
+  "brand": "default",
+  "brandColors": {
+    "shadow": "#1a1a18",
+    "light": "#ffffff",
+    "accent": "#7a2e1c"
+  },
+  "darkBrand": false,
+  "crop": "band",
+  "geometry": {
+    "box": [
+      0,
+      256,
+      1536,
+      512
+    ],
+    "size": [
+      1536,
+      512
+    ]
+  },
+  "format": "webp",
+  "hatch": false,
+  "safeAreaInset": 0.08,
+  "source": {
+    "file": "na-74684801.png",
+    "sha256": "d70b8f55267b09717c30be6464501f194e1fc40c77135a367a7e2f9fa82d9259",
+    "sidecar": {
+      "tool": "scripts/generate-image.mjs",
+      "toolVersion": "1",
+      "date": "2026-11-11T20:00:53.493Z",
+      "seed": "na-close-2026-11#3",
+      "axes": {
+        "custom": true
+      },
+      "prompt": "Photograph of a smooth matte black plaster wall, fine matte texture, natural soft overcast daylight. Subject: one single straight diagonal cut across the plain surface, leaning like a forward slash about 20 degrees off vertical, deep oxblood paper visible where it opens. Wide framing with a lot of empty space around the cut. Contemporary, restrained, intentional. Palette strictly near-black, neutral grey and one deep oxblood (#7a2e1c). Plain flat near-black surface, evenly lit, no vignette. No text, no letters, no logos, no people, no glow, no gradients, no neon, no 3D blobs, no retro or vintage styling, no violence connotations. Generous empty space.",
+      "model": "openai/gpt-image-2",
+      "quality": "low",
+      "aspect": "3:2",
+      "cost": 0.005505,
+      "costReported": true,
+      "usage": {
+        "cost": 0.005505,
+        "images": 1
+      },
+      "sha256": "d70b8f55267b09717c30be6464501f194e1fc40c77135a367a7e2f9fa82d9259"
+    }
+  },
+  "verify": {
+    "levels": {
+      "blackPoint": 0.0,
+      "whitePoint": 0.6667,
+      "whitePct": 90.0
+    },
+    "paperDeltaE": 60.01,
+    "accentDeltaE": 3.05,
+    "accentAreaPct": 0.75,
+    "paperMax": 4.0,
+    "accentMax": 12.0,
+    "pass": false
+  }
+}
